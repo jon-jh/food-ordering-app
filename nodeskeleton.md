@@ -44,6 +44,7 @@ Items
 - description
 - price
 
+![alt text](food-ordering-app.png)
 ---
 
 ### Routes

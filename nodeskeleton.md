@@ -17,42 +17,24 @@
 ### ERD
 
 ---
-Users
+Users 
 - id
-- username
-- password
+- phone_number (will be used as the customer identification and for sms notification)
 - name
-- address
-- phone_number
-- signup_date
 
-Orders
+Orders (all the orders made by the user)
 - id 
 - user_id
 - order_date
-- total_price
 - status
 
-Order_Items
+Order_Items (a combination of the menu_items selected by the user after clicking check out)
 - id
 - order_id
 - menu_item_id
 - quantity
 
-Payment
-- id
-- order_id
-- payment_date
-- payment_status
-
-Review
-- id
-- user_id
-- rating
-- comment
-- review_date
-
-Menu_Items
+Menu_Items (all the items that make up the menu)
 - id
 - name
 - price
@@ -92,3 +74,9 @@ Menu_Items
 ### Wireframes
 
 ---
+
+### Development kits
+- Javascript (expressjs, jquery, )
+- HTML
+- CSS (SCSS)
+- Database (postgres)

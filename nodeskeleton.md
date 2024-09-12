@@ -73,9 +73,28 @@ Menu_Items
 
 ### Routes
 
+> #### POST
+- /login (handles login)
+- /user (handles user account info)
+- /order (handles data from the order page)
+- /restaurant/:user_id (specifically for the restaurant owner)
+- /logout
+- /register (can register user)
+- /franchise (handles the restaurant registration)
+
+
+
+> #### GET
+- /login (the login page)
+- /order (order page to handle the order)
+- /profile  (Shows the users analytics:- order history and user account information)
+- /restaurant (shows the information for the restaurant)
+- /restaurant/reviews (shows the review for the restaurant)
+- /order/:order_id (shows the order status)
+- /register (registration page)
+- /franchise (franchise registration page)
 
 ---
-
 
 ---
 

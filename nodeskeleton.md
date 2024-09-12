@@ -29,7 +29,6 @@ Users
 Orders
 - id 
 - user_id
-- restaurant_id
 - order_date
 - total_price
 - status
@@ -49,20 +48,12 @@ Payment
 Review
 - id
 - user_id
-- restaurant_id
 - rating
 - comment
 - review_date
 
-Restaurants
-- id
-- name
-- address
-- user_id
-
 Menu_Items
 - id
-- restaurant_id
 - name
 - price
 - description

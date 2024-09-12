@@ -67,12 +67,8 @@ Menu_Items
 - price
 - description
 
-Items
-- id
-- description
-- price
-
 ![alt text](food-ordering-app.png)
+
 ---
 
 ### Routes

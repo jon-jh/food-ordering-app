@@ -29,15 +29,43 @@ Users
 Orders
 - id 
 - user_id
-- item_id
 - restaurant_id
-- number_of_items
+- order_date
+- total_price
+- status
+
+Order_Items
+- id
+- order_id
+- menu_item_id
+- quantity
+
+Payment
+- id
+- order_id
+- payment_date
+- payment_status
+
+Review
+- id
+- user_id
+- restaurant_id
+- rating
+- comment
+- review_date
 
 Restaurants
 - id
 - name
 - address
 - user_id
+
+Menu_Items
+- id
+- restaurant_id
+- name
+- price
+- description
 
 Items
 - id

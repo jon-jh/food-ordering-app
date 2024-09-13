@@ -1,16 +1,13 @@
 ### User Stories
 
 ---
-- A user should be able to log into their account
-- If the user has no account they should be able to signup for an account.
-- The users password must be hashed.
-- The user is presented with restaurants in their city as soon as they login.
-- The user can search for restaurants or restuarants that have a certain item.
-- The user will be able to order as many items as the restaurant limits the item orders.
-- The user can abort the order process before checkout.
-- When the user checkout the order the order is locked and the estimated time of arrival is shown.
-
-
+ As a user I want to see the menu and add different foods to my cart. 
+ As a user i want to be able to edit my cart before confirming my order.
+ As the owner, I want to be notified on my phone when an order is made. 
+ As the owner, I need to have my own log-in on the web site where I see the pending orders. 
+ I need to be able to confirm an order plus say how long until it's ready for the user to see. 
+ As the user, I want to see the order status change to 'Order accepted - ready in x minutes' 
+ and also get a message to my phone with the same status update.
 
 ---
 
@@ -48,15 +45,17 @@ Menu_Items (all the items that make up the menu)
 
 > #### POST
 - /user (handles user account info)
-- /order (handles data from the order page)
+- /order (handles data for the order)
 
 
 
 > #### GET
-- /order (order page to handle the order)
-- /profile  (Shows the users analytics:- order history and user account information)
-- /admin (For the retaurant owner)
-- /order/:order_id (shows the order status)
+- /  (the front page/ user page)
+  
+- /order/:phonenumber (shows the order status) API
+  
+- /admin (For the restaurant owner)
+
 
 ---
 
@@ -72,6 +71,14 @@ Menu_Items (all the items that make up the menu)
 - Database (postgres)
 
 ---
+
+user html -
+admin html - 
+Base layout - Navbar , color-format, button , font, border-format
+
+user css
+admin css
+viewport css
 ---
 
 const port = process.env.PORT || 808

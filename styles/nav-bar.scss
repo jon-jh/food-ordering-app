@@ -1,0 +1,32 @@
+nav {
+  display: flex;
+  position: fixed;
+  top: 0;
+  justify-content: space-between;
+  height: 100px;
+  width: 100%;
+  background-color: #0e0f14;
+  color: #cacae1;
+  padding: 0 1.5em;
+  align-items: center;
+
+  span {
+    font-family: sans-serif;
+  }
+}
+
+.nav-right-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
+}
+
+/* Responsive Design */
+/* Desktop Formatting*/
+
+@media only screen and (min-width:1024px) {
+  nav {
+    background-color: #0e0f14;
+  }
+}

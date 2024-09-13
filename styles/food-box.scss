@@ -1,0 +1,33 @@
+.food-box {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  border: 5px solid #000000;
+  border-radius: 20px;
+  background-color: azure;
+}
+
+.header {
+  text-align: center;
+  padding: 10px;
+}
+
+.content {
+  flex: 1;
+  background-image: url('/fries.jpg');
+  background-size: fill;
+  background-position: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.footer button {
+  width: 20px;
+  height: 20px;
+  font-size: 18px;
+}

@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/nav-bar.css" />
+  <link rel="stylesheet" href="/styles/header.css" />
+  <link rel="stylesheet" href="/styles/food-box.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
@@ -26,12 +28,28 @@
       <counter>0 Items</counter>
       <button>Review Order</button>
   </nav>
-  <!-- header/title -->
+
+  <!-- header/menu-title -->
   <header>
     <span>
-      <img src="/menu-title.jpg">
+      
     </span>
   </header>
+
+  <!-- menu-food-boxes -->
+  <div class="food-box">
+    <div class="header">
+      <label for="food-box-label">Food 1</label>
+    </div>
+    <div class="content">
+    </div>
+    <footer class="footer">
+      <button type="button" id="decrement-btn">-</button>
+      <span id="counter-value">0</span>
+      <button type="button" id="increment-btn">+</button>
+    </footer>
+  </div>
+
 </body>
 
 </html>

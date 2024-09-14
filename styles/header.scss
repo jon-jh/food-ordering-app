@@ -1,5 +1,12 @@
 header {
+  position: absolute;
+  top: 100px;
   width: 100%;
   height: 100px;
-  background-image: url('/menu-title.jpg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/menu-title.jpg);
+  background-size: contain;
+  z-index: 1;
 }

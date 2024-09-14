@@ -37,7 +37,7 @@ Menu_Items (all the items that make up the menu)
 - price
 - description
 
-![alt text]()
+![alt text](food-ordering-ERD.png)
 
 ---
 

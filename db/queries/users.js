@@ -102,15 +102,14 @@ const getMenu = () => {
   });
 };
 
-
 const getOrders = () => {
   const queryString = `
   SELECT * 
   FROM orders;
-  `
-  return db.query(queryString).then ((result) => {
+  `;
+  return db.query(queryString).then((result) => {
     return result.rows;
-  })
+  });
 };
 
 const getOrdersByPhoneNumber = (phoneNumber) => {
@@ -120,13 +119,12 @@ const getOrdersByPhoneNumber = (phoneNumber) => {
   users.phone_number as userPhoneNumber,
   orders.order_date as userOrderDate ,
   menu_items.name as userItemOrder,
-  order_items.quantity * menu_items.price/100 as userPrice,
-  order_items.quantity as userQuantity,
+  orders.quantity * menu_items.price/100 as userPrice,
+  orders.quantity as userQuantity,
   orders.status as userStatus
 from orders
 join users on users.id = orders.user_id
-join order_items on order_items.id = orders.order_item_id
-join menu_items on menu_items.id = order_items.menu_item_id
+join menu_items on menu_items.id = orders.menu_item_id
 where  users.phone_number = $1
 group by 
 userPhoneNumber, userName, userOrderDate, userItemOrder, userPrice, userQuantity,userStatus
@@ -134,16 +132,79 @@ order by
 userOrderDate desc
 limit 10
 
-  `
-  
-  return db.query(queryString, [phoneNumber]).then((result) => {
-    console.log(result.rows);
-    return result.rows;
-  })
-  .catch((err) => {console.log(err)})
-}
+  `;
 
-getOrdersByPhoneNumber('555-808-0809');
+  return db
+    .query(queryString, [phoneNumber])
+    .then((result) => {
+      console.log(result.rows);
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+const getIdByPhoneNumber = (phoneNumber) => {
+  const queryString = `
+  SELECT 
+  users.id as userId
+  from orders
+  join users on users.id = orders.user_id
+  join menu_items on menu_items.id = orders.menu_item_id
+  where users.phone_number = $1 
+  `;
+  return db
+    .query(queryString, [phoneNumber])
+    .then((result) => {
+      //console.log(result.rows[0]);
+      return result.rows[0];
+    })
+    .catch((err) => {
+      console.log(err);
+      return null;
+    });
+};
+
+//receives an object of orders {menu_item_id, quantity}
+const addOrder = (phoneNumber, order) => {
+  const queryString = `
+  -- First, select the user_id based on the phone number
+WITH user_data AS (
+  SELECT
+  id AS user_id,
+  name,
+  phone_number
+  FROM users
+  WHERE phone_number = $1
+)
+-- Then, insert into the orders table using the selected user_id
+INSERT INTO orders(user_id, order_date, quantity, menu_item_id, status)
+VALUES ((SELECT user_id FROM user_data), $2, $3, $4, $5)
+RETURNING 
+*, 
+(SELECT name FROM user_data),
+(SELECT phone_number FROM user_data)
+  `;
+  const { item_id, quantity } = order;
+  const queryParams = [`${phoneNumber}`, `NOW()`, quantity, item_id, "pending"];
+
+  return db
+    .query(queryString, queryParams)
+    .then((result) => {
+      console.log(result.rows[0]);
+      return result.rows[0];
+    })
+
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+//addOrder("555-789-0123", { item_id: 10, quantity: 10 });
+//addOrderItem({item_id: 10,quantity:10});
+//getIdByPhoneNumber('555-808-0809')
+//getOrdersByPhoneNumber('555-789-0123');
 module.exports = {
   getUsers,
   getStatusByPhoneNumber,
@@ -151,5 +212,7 @@ module.exports = {
   getMenu,
   addUser,
   getOrders,
-  getOrdersByPhoneNumber
+  getOrdersByPhoneNumber,
+  getIdByPhoneNumber,
+  addOrder,
 };

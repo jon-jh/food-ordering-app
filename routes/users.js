@@ -1,3 +1,18 @@
+/**
+ * Express router providing user related routes.
+ * @module routes/users
+ * @requires express
+ */
+
+/**
+ * Route serving user page.
+ * @name get/
+ * @function
+ * @memberof module:routes/users
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
+ */
 /*
  * All routes for Users are defined here
  * Since this file is loaded in server.js into /users,
@@ -14,19 +29,5 @@ router.get('/', (req, res) => {
 
 
 
-// router.post('/user', (req, res)=> {
-  
-// });
 
-// router.post ('/order', (req,res) => {
-
-// });
-
-// router.get('/order:phonenumber', (req,res) => {
-
-// });
-
-// router.get('/admin', (req, res) => {
-
-// });
 module.exports = router;

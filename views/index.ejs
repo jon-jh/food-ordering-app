@@ -24,29 +24,31 @@
 <body>
   <!-- nav-bar -->
   <nav>
-    <span>Restaurant Name (User Page)</span>
+    <span>Restaurant Name Here (User Home Page)</span>
     <span class="nav-right-label">
-      <counter>0 Items</counter>
+      <counter>Make Item Counter Here (0 Items)</counter>
       <button id="reviewOrderBtn">Review Order</button>
     </span>
   </nav>
 
-  <!-- The pop-up window -->
+  <!-- Pop-up Review Window -->
   <div id="reviewPopup" class="popup">
     <div class="popup-content">
       <span class="close">X</span>
       <h2>Your Order</h2>
       <div id="orderItems">
 
-        <!-- Order items will be inserted here -->
+        <!-- Order items should be inserted here -->
+
       </div>
       <div class="footer">
-      <button id="confirmOrderBtn">Confirm</button>
-      <button id="makeChangesBtn">Make Changes</button>
+        <button id="confirmOrderBtn">Confirm</button>
+        <input type="text" id="phoneNumber" placeholder="Enter your phone number">
+        <button id="makeChangesBtn">Make Changes</button>
       </div>
     </div>
   </div>
-  <script src="/scripts/review-order.js"></script>
+  <script src="/scripts/popup.js"></script>
 
   <!-- header/menu-title -->
   <header>
@@ -56,81 +58,6 @@
 
   <!-- menu-food-boxes -->
   <div id='menu_container' class="grid-container">
-
-    <div class="food-box">
-      <div class="header">
-        <label for="food-box-label">Food 1</label>
-      </div>
-      <div class="content">
-      </div>
-      <footer class="footer">
-        <button type="button" id="decrement-btn">-</button>
-        <span id="counter-value">0</span>
-        <button type="button" id="increment-btn">+</button>
-      </footer>
-    </div>
-    <div class="food-box">
-      <div class="header">
-        <label for="food-box-label">Food 2</label>
-      </div>
-      <div class="content">
-      </div>
-      <footer class="footer">
-        <button type="button" id="decrement-btn">-</button>
-        <span id="counter-value">0</span>
-        <button type="button" id="increment-btn">+</button>
-      </footer>
-    </div>
-    <div class="food-box">
-      <div class="header">
-        <label for="food-box-label">Food 3</label>
-      </div>
-      <div class="content">
-      </div>
-      <footer class="footer">
-        <button type="button" id="decrement-btn">-</button>
-        <span id="counter-value">0</span>
-        <button type="button" id="increment-btn">+</button>
-      </footer>
-    </div>
-    <div class="food-box">
-      <div class="header">
-        <label for="food-box-label">Food 4</label>
-      </div>
-      <div class="content">
-      </div>
-      <footer class="footer">
-        <button type="button" id="decrement-btn">-</button>
-        <span id="counter-value">0</span>
-        <button type="button" id="increment-btn">+</button>
-      </footer>
-    </div>
-    <div class="food-box">
-      <div class="header">
-        <label for="food-box-label">Food 5</label>
-      </div>
-      <div class="content">
-      </div>
-      <footer class="footer">
-        <button type="button" id="decrement-btn">-</button>
-        <span id="counter-value">0</span>
-        <button type="button" id="increment-btn">+</button>
-      </footer>
-    </div>
-    <div class="food-box">
-      <div class="header">
-        <label for="food-box-label">Food 6</label>
-      </div>
-      <div class="content">
-      </div>
-      <footer class="footer">
-        <button type="button" id="decrement-btn">-</button>
-        <span id="counter-value">0</span>
-        <button type="button" id="increment-btn">+</button>
-      </footer>
-
-      <section></section>
-    </div>
   </div>
 
 </body>

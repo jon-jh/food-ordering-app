@@ -1,18 +1,17 @@
 /**
- * @fileoverview Routes for menus.
- * @description All routes for menus are defined here. Since this file is loaded in server.js into /menus,
- * these routes are mounted onto /menus.
- * @see {@link https://expressjs.com/en/guide/using-middleware.html#middleware.router|Express Middleware Router}
+ * Express router providing user related routes.
+ * @module routes/users
+ * @requires express
  */
 
- /**
- * GET /menus
- * Renders the menus page.
- * @name GET/menus
+/**
+ * Route serving user page.
+ * @name get/
  * @function
- * @memberof module:routes/menus
- * @param {Object} req - Express request object.
- * @param {Object} res - Express response object.
+ * @memberof module:routes/users
+ * @inner
+ * @param {string} path - Express path
+ * @param {callback} middleware - Express middleware
  */
 /*
  * All routes for Users are defined here
@@ -24,8 +23,15 @@
 const express = require('express');
 const router  = express.Router();
 
+
+
 router.get('/', (req, res) => {
-  res.render('menus');
+  userQueries.getOrders().then((users) => {
+    res.json({users});
+  })
+  .catch((err) => {
+    res.status(500).json({ error: err.message });
+  });
 }); 
 
 

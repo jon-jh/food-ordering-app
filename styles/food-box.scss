@@ -1,9 +1,10 @@
+
 .food-box {
   width: 350px;
   height: 350px;
   display: flex;
   flex-direction: column;
-  border: 5px solid black;
+  border: 5px  inset $base-border-color;
   border-radius: 5px;
   background-color: azure;
   background-image: url(/fries.png);

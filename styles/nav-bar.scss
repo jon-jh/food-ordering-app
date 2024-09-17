@@ -11,8 +11,13 @@ nav {
   align-items: center;
   z-index: 2;
 
+
   span {
-    font-family: sans-serif;
+    
+    font-family: "Exo 2", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
   }
 
   #reviewOrderBtn{

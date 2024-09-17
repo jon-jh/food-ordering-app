@@ -108,7 +108,7 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use( '/users',userRoutes);
 app.use('/menus', menuRoutes);
 app.use('/api', apiRoutes);
-app.use('/order', orderRoutes);
+app.use(orderRoutes);
 app.use(adminRoutes);//Route to admin here
 // Note: mount other resources here, using the same pattern above
 

@@ -26,10 +26,15 @@ const router  = express.Router();
 
 
 //redirects to the orders api for now
-router.get('/', (req, res) => {
+router.get('/order', (req, res) => {
   res.redirect('api/orders')
 }); 
 
+
+//handle post for orders to add them to the db
+router.post('/order', (req,res) => {
+  const {} = req.body;
+})
 
 
 module.exports = router;

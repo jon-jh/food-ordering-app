@@ -1,7 +1,7 @@
 /**
  * @file server.js
  * @description Main server file for the food-ordering-app. Configures and starts the Express server, sets up middleware, and mounts routes.
- * 
+ *
  * @requires dotenv - Loads environment variables from a .env file into process.env.
  * @requires express - Fast, unopinionated, minimalist web framework for Node.js.
  * @requires morgan - HTTP request logger middleware for Node.js.
@@ -12,50 +12,50 @@
  * @requires ./routes/widgets-api - API routes for widget-related operations.
  * @requires ./routes/users - Routes for user-related pages.
  * @requires ./routes/menus - Routes for menu-related pages.
- * 
+ *
  * @constant {number} PORT - The port number on which the server listens. Defaults to 8080 if not specified in environment variables.
  * @constant {object} app - The Express application instance.
- * 
+ *
  * @function
  * @name app.get('/')
  * @description Route handler for the home page. Renders the index view.
- * 
+ *
  * @function
  * @name app.listen
  * @description Starts the Express server and listens on the specified port.
- * 
+ *
  * @middleware
  * @name morgan
  * @description HTTP request logger middleware configured in 'dev' mode.
- * 
+ *
  * @middleware
  * @name express.urlencoded
  * @description Middleware to parse URL-encoded bodies.
- * 
+ *
  * @middleware
  * @name sassMiddleware
  * @description Custom middleware to compile Sass/SCSS files.
- * 
+ *
  * @middleware
  * @name express.static
  * @description Middleware to serve static files from the 'public' and 'docs' directories.
- * 
+ *
  * @middleware
  * @name /api/users
  * @description Mounts user API routes.
- * 
+ *
  * @middleware
  * @name /api/menus
  * @description Mounts menu API routes.
- * 
+ *
  * @middleware
  * @name /api/widgets
  * @description Mounts widget API routes.
- * 
+ *
  * @middleware
  * @name /users
  * @description Mounts user-related page routes.
- * 
+ *
  * @middleware
  * @name /menus
  * @description Mounts menu-related page routes.
@@ -112,10 +112,15 @@ app.use('/api', apiRoutes)
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
+// Pages - There are only 2 pages, so I just put it right here.
+
 app.get('/', (req, res) => {
   res.render('index');
 });
 
+app.get('/admin', (req, res) => {
+  res.render('admin');
+})
 
 
 app.listen(PORT, () => {

@@ -1,12 +1,11 @@
 header {
   position: absolute;
-  top: 100px;
+  top: 120px;
   width: 100%;
   height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url(/menu-title.jpg);
+  background-image: url(/menu.png);
   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   z-index: 1;
 }

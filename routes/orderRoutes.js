@@ -23,11 +23,32 @@
 const express = require('express');
 const router  = express.Router();
 
+
+
 router.get('/', (req, res) => {
-  res.render('users');
+  userQueries.getOrders().then((users) => {
+    res.json({users});
+  })
+  .catch((err) => {
+    res.status(500).json({ error: err.message });
+  });
 }); 
 
 
 
+// router.post('/user', (req, res)=> {
+  
+// });
 
+// router.post ('/order', (req,res) => {
+
+// });
+
+// router.get('/order:phonenumber', (req,res) => {
+
+// });
+
+// router.get('/admin', (req, res) => {
+
+// });
 module.exports = router;

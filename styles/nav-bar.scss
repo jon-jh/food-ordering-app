@@ -11,18 +11,25 @@ nav {
   align-items: center;
   z-index: 2;
 
-
   span {
     font-family: sans-serif;
+  }
+
+  #reviewOrderBtn{
+    height: 50%;
+    font-weight: bold;
+    color: green;
   }
 }
 
 .nav-right-label {
   display: flex;
+  height: inherit;
   flex-direction: row;
   align-items: center;
   gap: 1em;
 }
+
 
 /* Responsive Design */
 /* Desktop Formatting*/

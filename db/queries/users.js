@@ -41,32 +41,8 @@ const getStatusByPhoneNumber = (phoneNumber) => {
   });
 };
 
-/**
- * Retrieves the status of a user by their name.
- * @param {string} userName - The name of the user.
- * @returns {Promise<Object>} A promise that resolves to an object containing the user's name, status, phone number, and order date.
- */
-const getStatusByUserName = (userName) => {
-  const queryString = `
-    SELECT
-      users.name as userName,
-      orders.status as userStatus,
-      users.phone_number as userPhoneNumber,
-      order_date as userOrderDate
-    FROM
-      orders
-      JOIN users ON users.id = user_id
-    WHERE
-      users.name = $1
-    ORDER BY
-      order_date desc;
-  `;
 
-  const queryParams = [userName];
-  return db.query(queryString, queryParams).then((result) => {
-    return result.rows[0];
-  });
-};
+
 
 /**
  * Adds a new user to the database.
@@ -82,7 +58,7 @@ const addUser = (user) => {
     RETURNING *;
   `;
 
-  const queryParams = [user.name, user.phoneNumber];
+  const queryParams = [null||user.name, user.phoneNumber];
   return db.query(queryString, queryParams).then((result) => {
     return result.rows[0];
   });
@@ -104,8 +80,14 @@ const getMenu = () => {
 
 const getOrders = () => {
   const queryString = `
-  SELECT * 
-  FROM orders;
+  SELECT
+  *,
+  orders.quantity * menu_items.price as total_price
+  FROM orders
+  JOIN users on users.id = orders.user_id
+  JOIN menu_items on menu_items.id = orders.menu_item_id
+  ORDER BY
+  order_date desc
   `;
   return db.query(queryString).then((result) => {
     return result.rows;
@@ -205,10 +187,10 @@ RETURNING
 //addOrderItem({item_id: 10,quantity:10});
 //getIdByPhoneNumber('555-808-0809')
 //getOrdersByPhoneNumber('555-789-0123');
+//addUser({phoneNumber: '123-456-7890'});
 module.exports = {
   getUsers,
   getStatusByPhoneNumber,
-  getStatusByUserName,
   getMenu,
   addUser,
   getOrders,

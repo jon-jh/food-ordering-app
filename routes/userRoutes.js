@@ -8,26 +8,27 @@
 const express = require("express");
 const router = express.Router();
 const userQueries = require("../db/queries/users");
-const bcrypt = require("bcrypt");
 
+//Put all user routing here
 
-router.post("/newuser", (req, res) => {
-  const {phoneNumber, name} = req.body;
-  
+router.get('/', (req, res) => {
+  res.render('users');
+}); 
+
+//test ignore 
+router.get("/new", (req, res) => {
+  //console.log('rendering new');
+  res.render('newuser');
 });
 
-router.get("/users", (req, res) => {
-  userQueries
-    .getUsers()
-    .then((users) => {
-      res.json({ users });
-    })
-    .catch((err) => {
-      res.status(500).json({ error: err.message });
-    });
-
-    
+//New user login info will be sent here
+router.post("/new", (req, res) => {
+  const {phoneNumber, userName} = req.body;
+  console.log(req.body);
 });
+
+
+
 
 
 

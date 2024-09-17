@@ -94,19 +94,21 @@ app.use(express.static(path.join(__dirname, 'images')));
 // Note: Feel free to replace the example routes below with your own
 
 const widgetApiRoutes = require('./routes/widgets-api');
-const usersRoutes = require('./routes/users');
-const menusRoutes = require('./routes/menus');
+const userRoutes = require('./routes/userRoutes');
+const menuRoutes = require('./routes/menuRoutes');
 const apiRoutes = require("./routes/apiRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 
 app.use('/api/widgets', widgetApiRoutes);
-app.use('/users', usersRoutes);
-app.use('/menus', menusRoutes);
-app.use('/api', apiRoutes)
+app.use( '/users',userRoutes);
+app.use('/menus', menuRoutes);
+app.use('/api', apiRoutes);
+app.use('/order', orderRoutes);
 app.use(adminRoutes);//Route to admin here
 // Note: mount other resources here, using the same pattern above
 

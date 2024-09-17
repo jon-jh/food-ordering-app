@@ -27,6 +27,12 @@ router.get('/', (req, res) => {
   res.render('users');
 }); 
 
+router.get("/new", (req, res) => {
+  //console.log('rendering new');
+  res.render('newuser');
+});
+
+
 
 
 

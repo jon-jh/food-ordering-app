@@ -36,19 +36,4 @@ router.get('/', (req, res) => {
 
 
 
-// router.post('/user', (req, res)=> {
-  
-// });
-
-// router.post ('/order', (req,res) => {
-
-// });
-
-// router.get('/order:phonenumber', (req,res) => {
-
-// });
-
-// router.get('/admin', (req, res) => {
-
-// });
 module.exports = router;

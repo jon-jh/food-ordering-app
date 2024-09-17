@@ -20,35 +20,16 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
+const { render } = require('ejs');
 const express = require('express');
 const router  = express.Router();
 
 
-
+//redirects to the orders api for now
 router.get('/', (req, res) => {
-  userQueries.getOrders().then((users) => {
-    res.json({users});
-  })
-  .catch((err) => {
-    res.status(500).json({ error: err.message });
-  });
+  res.redirect('api/orders')
 }); 
 
 
 
-// router.post('/user', (req, res)=> {
-  
-// });
-
-// router.post ('/order', (req,res) => {
-
-// });
-
-// router.get('/order:phonenumber', (req,res) => {
-
-// });
-
-// router.get('/admin', (req, res) => {
-
-// });
 module.exports = router;

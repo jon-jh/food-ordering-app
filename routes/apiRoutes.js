@@ -54,4 +54,17 @@ router.get("/orders:phonenumber", (req, res) => {
     });
 });
 
+router.get("/users", (req, res) => {
+  userQueries
+    .getUsers()
+    .then((users) => {
+      res.json({ users });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+
+    
+});
+
 module.exports = router;

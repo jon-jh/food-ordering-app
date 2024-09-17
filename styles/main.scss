@@ -4,14 +4,33 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  /* Center vertically */
 }
 
 // Food Squares Grid
 .grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 100px;
-  width: 80%;
+  gap: 85px;
+  width: auto;
+  /* Adjust width to auto */
   margin-top: 250px;
+  justify-content: center;
+  /* Center horizontally */
 }
 
+/* Responsive Design */
+/* Desktop Formatting */
+
+@media only screen and (max-width: 1200px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

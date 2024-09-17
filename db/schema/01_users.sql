@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS orders CASCADE;
 CREATE TABLE
   users (
     id SERIAL PRIMARY KEY NOT NULL,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(255),
     phone_number VARCHAR(25) NOT NULL
   );
 

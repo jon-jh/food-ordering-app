@@ -49,7 +49,7 @@ const renderMenus = function () {
         } )
       })
       .fail(() => {
-        alert('Error: cannot get data from the menu json file');
+        alert('Error: cannot get data from the menus json api.');
       })
     });
     

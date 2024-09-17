@@ -97,6 +97,7 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const menusRoutes = require('./routes/menus');
 const apiRoutes = require("./routes/apiRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -106,6 +107,7 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/menus', menusRoutes);
 app.use('/api', apiRoutes)
+app.use(adminRoutes);//Route to admin here
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -118,10 +120,10 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get('/admin', (req, res) => {
-  res.render('admin');
-})
 
+// app.get('/admin', (req, res) => {
+//   res.render('admin');
+// })
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

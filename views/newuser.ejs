@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>New User Page</title>
+
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+
+  
+  
+</head>
+
+<body>
+  <form class = "form-group" action = "/users/new" method = "POST" >
+    <input
+      class = "form-control"
+      type = "tel"
+      name = "phoneNumber"
+      placeholder="Phone Number"
+      style = "width: 500px; height: 50px; margin: 1em"
+    />
+    <input
+      class = "form-control"
+      type = "text"
+      name = "userName"
+      placeholder="User Name"
+      style = "width: 500px; height: 50px; margin: 1em"
+    />
+    <button type="submit" class="btn btn-primary"> Submit </button>
+</form>
+
+</body>
+
+</html>

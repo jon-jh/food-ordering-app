@@ -23,7 +23,7 @@ changesBtn.onclick = function() {
 // Clicking the 'confirm' button should post the order details to the orders database.
 
 confirmBtn.onclick = function() {
-
+  
 }
 
 

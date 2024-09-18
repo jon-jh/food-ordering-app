@@ -4,26 +4,48 @@
   gap: 40px;
   padding: 20px;
   background-color: #f9f9f9;
-  border: 1px solid #ddd;
+  border: 1px solid #dddddd;
   width: 100%;
   max-width: 800px;
   margin: 250px auto 0;
 }
 
 .order {
-  border: 4px solid #ccc;
+  border: 4px solid grey;
   padding: 10px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 10px;
   height: auto;
 }
 
 .order-header,
 .order-body,
-.order-footer {
+.order-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .status{
+    color: black;
+    background-color: rgb(234, 234, 234);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+  }
+}
+
+.order-form {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+
+#confirm-10,
+#confirm-20,
+#confirm-30{
+  background-color:rgb(47, 110, 255);
+  color: white;
 }

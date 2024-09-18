@@ -1,0 +1,29 @@
+#order-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  width: 100%;
+  max-width: 800px;
+  margin: 250px auto 0;
+}
+
+.order {
+  border: 4px solid #ccc;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  height: auto;
+}
+
+.order-header,
+.order-body,
+.order-footer {
+  display: flex;
+  flex-direction: column;
+}

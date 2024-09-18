@@ -17,6 +17,15 @@ $base-border-color : black;
     font-size: 30px;
     padding: 10px;
     color: azure;
+    text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black,
+        -0.05em -0.05em black,
+        -0.05em 0.05em black,
+        0.05em -0.05em black,
+        0.05em 0.05em black;
   }
 
   .content {
@@ -30,17 +39,33 @@ $base-border-color : black;
     justify-content: space-around;
     padding: 10px;
     align-items: center;
-    color: greenyellow;
+    color: #ffbf00;
     font-size: 30px;
     font-weight: bold;
+    text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black,
+        -0.05em -0.05em black,
+        -0.05em 0.05em black,
+        0.05em -0.05em black,
+        0.05em 0.05em black;
 
     button {
       width: 80px;
       height: 30px;
       font-size: 30px;
+      color: #ffffffcf;
+      background-color: #000000cf;
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
     }
   }
+}
+
+.food-box:hover {
+  box-shadow: 7px 7px 7px #ffbf00;
 }

@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
       alert('BUTTON TEST - CONFIRMED 10 MINUTES');
     } else if (event.target.matches('#confirm-20')) {
       event.preventDefault();
-      alert('BUTTON TEST - CONFIRMED 10 MINUTES');
+      alert('BUTTON TEST - CONFIRMED 20 MINUTES');
     } else if (event.target.matches('#confirm-30')) {
       event.preventDefault();
-      alert('BUTTON TEST - CONFIRMED 10 MINUTES');
+      alert('BUTTON TEST - CONFIRMED 30 MINUTES');
     }
   });
 });

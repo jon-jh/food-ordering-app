@@ -8,8 +8,14 @@
 const express = require('express');
 const router  = express.Router();
 
-router.get('/', (req, res) => {
-  res.render('users');
-}); 
+router.get('/admin', (req, res) => {
+  res.render('admin');
+})
+//To:Do add status changer will req status from the form submit
+router.post('/admin', (req, res) =>{
+  
+})
+
+
 
 module.exports = router;

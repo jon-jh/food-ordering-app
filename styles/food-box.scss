@@ -1,0 +1,46 @@
+
+.food-box {
+  width: 350px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  border: 5px  inset $base-border-color;
+  border-radius: 5px;
+  background-color: azure;
+  background-image: url(/fries.png);
+  background-size: cover;
+  background-position: center;
+
+  .header {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    padding: 10px;
+    color: azure;
+  }
+
+  .content {
+    flex: 1;
+    background: transparent;
+  }
+
+  .footer {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    align-items: center;
+    color: greenyellow;
+    font-size: 30px;
+    font-weight: bold;
+
+    button {
+      width: 80px;
+      height: 30px;
+      font-size: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

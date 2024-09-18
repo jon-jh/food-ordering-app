@@ -40,6 +40,8 @@
     background-color: #ffbf00;
     color: #000000cf;
     font-weight: 600;
+    height: 50px;
+    width: 20%;
     cursor: pointer;
   }
 
@@ -47,8 +49,19 @@
     background-color: #ffbf00;
     color: #000000cf;
     font-weight: 600;
+    height: 50px;
+    width: 20%;
     cursor: pointer;
   }
 
+  #phoneNumber {
+    width: 50%;
+  }
 
+  .orderPopUpTitle {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 35px;
+  }
 }

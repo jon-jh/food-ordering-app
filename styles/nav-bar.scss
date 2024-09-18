@@ -12,15 +12,21 @@ nav {
   z-index: 2;
 
 
-  span {
-    
+  span.nav-right-label {
     font-family: "Exo 2", sans-serif;
     font-optical-sizing: auto;
     font-weight: 250;
     font-style: normal;
   }
 
-  #reviewOrderBtn{
+  span.restaurantName {
+    font-family: 'Neonderthaw', sans-serif;
+    font-style: normal;
+    font-size: 50px;
+    color: #ffbf00;
+  }
+
+  #reviewOrderBtn {
     height: 50%;
     font-weight: bold;
     color: #000000cf;

@@ -41,9 +41,6 @@ const getStatusByPhoneNumber = (phoneNumber) => {
   });
 };
 
-
-
-
 /**
  * Adds a new user to the database.
  * @param {Object} user - The user object containing name and phone number.
@@ -58,7 +55,7 @@ const addUser = (user) => {
     RETURNING *;
   `;
 
-  const queryParams = [null||user.name, user.phoneNumber];
+  const queryParams = [null || user.name, user.phoneNumber];
   return db.query(queryString, queryParams).then((result) => {
     return result.rows[0];
   });
@@ -82,12 +79,13 @@ const getOrders = () => {
   const queryString = `
   SELECT
   *,
-  orders.quantity * menu_items.price as total_price
+  order_items.quantity * menu_items.price as total_price
   FROM orders
-  JOIN users on users.id = orders.user_id
-  JOIN menu_items on menu_items.id = orders.menu_item_id
+  join users on users.id = orders.user_id
+join order_items on order_items.order_id = orders.id
+join menu_items on menu_items.id = order_items.menu_item_id
   ORDER BY
-  order_date desc
+  orders.order_date desc
   `;
   return db.query(queryString).then((result) => {
     return result.rows;
@@ -101,15 +99,18 @@ const getOrdersByPhoneNumber = (phoneNumber) => {
   users.phone_number as userPhoneNumber,
   orders.order_date as userOrderDate ,
   menu_items.name as userItemOrder,
-  orders.quantity * menu_items.price/100 as userPrice,
-  orders.quantity as userQuantity,
+  menu_items.id as userMenuID,
+  order_items.quantity * menu_items.price as userPrice,
+  order_items.quantity as userQuantity,
   orders.status as userStatus
 from orders
 join users on users.id = orders.user_id
-join menu_items on menu_items.id = orders.menu_item_id
+join order_items on order_items.order_id = orders.id
+join menu_items on menu_items.id = order_items.menu_item_id
+
 where  users.phone_number = $1
 group by 
-userPhoneNumber, userName, userOrderDate, userItemOrder, userPrice, userQuantity,userStatus
+userPhoneNumber, userName, userOrderDate, userMenuId,userItemOrder, userPrice, userQuantity,userStatus
 order by 
 userOrderDate desc
 limit 10
@@ -148,46 +149,84 @@ const getIdByPhoneNumber = (phoneNumber) => {
     });
 };
 
-//receives an object of orders {menu_item_id, quantity}
-const addOrder = (phoneNumber, order) => {
+//receives an object of orders [{menu_item_id, quantity},..]
+const addOrder = (phoneNumber, orders) => {
   const queryString = `
   -- First, select the user_id based on the phone number
-WITH user_data AS (
-  SELECT
-  id AS user_id,
-  name,
-  phone_number
-  FROM users
-  WHERE phone_number = $1
-)
--- Then, insert into the orders table using the selected user_id
-INSERT INTO orders(user_id, order_date, quantity, menu_item_id, status)
-VALUES ((SELECT user_id FROM user_data), $2, $3, $4, $5)
-RETURNING 
-*, 
-(SELECT name FROM user_data),
-(SELECT phone_number FROM user_data)
+  WITH user_data AS (
+    SELECT id AS user_id
+    FROM users
+    WHERE phone_number = $1
+  )
+  -- Then, insert into the orders table using the selected user_id
+  INSERT INTO orders(user_id, order_date, status)
+  VALUES ((SELECT user_id FROM user_data), NOW(), 'pending')
+  RETURNING id AS order_id
   `;
-  const { item_id, quantity } = order;
-  const queryParams = [`${phoneNumber}`, `NOW()`, quantity, item_id, "pending"];
 
+  const queryParams = [phoneNumber];
+
+  return db
+    .query(queryString, queryParams)
+    .then((result) => {
+      const orderId = result.rows[0].order_id;
+      let orderItemsQuery = `INSERT INTO order_items (menu_item_id, order_id, quantity) VALUES `;
+      let queryParams = [];
+      let values = [];
+
+      orders.forEach((order, index) => {
+        const baseIndex = index * 3 + 1;
+        values.push(`($${baseIndex}, $${baseIndex + 1}, $${baseIndex + 2})`);
+        queryParams.push(order.menu_item_id, orderId, order.quantity);
+      });
+
+      orderItemsQuery += values.join(", ") + " RETURNING *;";
+
+      return db.query(orderItemsQuery, queryParams);
+    })
+    .then((result) => {
+      console.log(result.rows);
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
+
+const getUserByPhoneNumber = (phoneNumber) => {
+  const queryString = `
+  SELECT 
+  users.name as username,
+  users.phone_number as userphonenumber,
+  users.id as userid
+  FROM users
+  WHERE users.phone_number = $1
+
+  `;
+  const queryParams = [phoneNumber];
   return db
     .query(queryString, queryParams)
     .then((result) => {
       console.log(result.rows[0]);
       return result.rows[0];
     })
-
     .catch((err) => {
       console.log(err.message);
     });
 };
 
-//addOrder("555-789-0123", { item_id: 10, quantity: 10 });
+// addOrder("555-789-0123", [
+//   { menu_item_id: 10, quantity: 2 },
+//   { menu_item_id: 5, quantity: 1 },
+//   { menu_item_id: 6, quantity: 1 },
+//   { menu_item_id: 9, quantity: 1 }
+// ]);
+
 //addOrderItem({item_id: 10,quantity:10});
 //getIdByPhoneNumber('555-808-0809')
 //getOrdersByPhoneNumber('555-789-0123');
 //addUser({phoneNumber: '123-456-7890'});
+getUserByPhoneNumber("555-789-0123");
 module.exports = {
   getUsers,
   getStatusByPhoneNumber,
@@ -197,4 +236,5 @@ module.exports = {
   getOrdersByPhoneNumber,
   getIdByPhoneNumber,
   addOrder,
+  getUserByPhoneNumber,
 };

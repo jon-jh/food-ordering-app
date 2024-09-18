@@ -13,9 +13,10 @@ router.get('/admin', (req, res) => {
 })
 //To:Do add status changer will req status from the form submit
 router.post('/admin', (req, res) =>{
-  
+
 })
 
+//route 
 
 
 module.exports = router;

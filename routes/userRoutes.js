@@ -31,7 +31,8 @@ router.post("/new", (req, res) => {
 
 
 
-
+//make a checkout route
+//create and update to database route
 
 
 module.exports = router;

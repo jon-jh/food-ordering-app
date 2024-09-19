@@ -1,3 +1,4 @@
+$(document).ready(function() {
 // Giving the window and buttons inside the window variable names.
 const confirmBtn = document.getElementById("confirmOrderBtn")
 const reviewWindow = document.getElementById("reviewPopup");
@@ -23,6 +24,6 @@ changesBtn.onclick = function() {
 // Clicking the 'confirm' button should post the order details to the orders database.
 
 confirmBtn.onclick = function() {
-  
-}
 
+}
+});

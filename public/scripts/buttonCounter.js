@@ -1,3 +1,5 @@
+// This code updates the 'item counter' in the nav bar, the items in the review order list, and the numbers in the food boxes.
+
 $(document).ready(function() {
   const menuContainer = $("#menu_container");
   const selectedItems = {};
@@ -11,7 +13,7 @@ $(document).ready(function() {
     currentVal += 1;
     counter.text(currentVal);
 
-    updateSelectedItems(foodBox, currentVal); // Call updateSelectedItems here
+    updateSelectedItems(foodBox, currentVal);
   }
 
   function handleDecrement() {
@@ -24,7 +26,7 @@ $(document).ready(function() {
     }
     counter.text(currentVal);
 
-    updateSelectedItems(foodBox, currentVal); // Call updateSelectedItems here
+    updateSelectedItems(foodBox, currentVal);
   }
 
   function updateSelectedItems(foodBox, quantity) {
@@ -34,6 +36,12 @@ $(document).ready(function() {
     } else {
       delete selectedItems[foodName];
     }
+    updateCartCounter();
+  }
+
+  function updateCartCounter() {
+    const totalItems = Object.values(selectedItems).reduce((sum, quantity) => sum + quantity, 0);
+    $("cartCounter").text(`${totalItems} Items`);
   }
 
   menuContainer.on("click", ".increment-btn", handleIncrement);

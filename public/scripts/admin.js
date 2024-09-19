@@ -38,6 +38,8 @@ const createOrder = (order) => {
     <button type="submit" id="confirm-10">Confirm - 10 Minutes</button>
     <button type="submit" id="confirm-20">Confirm - 20 Minutes</button>
     <button type="submit" id="confirm-30">Confirm - 30 Minutes</button>
+    <button type="submit" class= "btn btn-success"  id="complete-order">Complete Order</button>
+    <button type="submit" class= "btn btn-danger"  id="cancel-order">Cancel Order</button>
     </form>
       </div>
     </div>

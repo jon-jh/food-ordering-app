@@ -69,3 +69,28 @@ $base-border-color: #000000cf;
 .food-box:hover {
   box-shadow: 7px 7px 7px #ffbf00;
 }
+
+/* RESPONSIVE DESIGN */
+
+/* Mobile Formatting */
+@media only screen and (max-width: 768px) {
+  .food-box {
+    width: 200px; /* Smaller width */
+    height: 200px; /* Smaller height */
+    margin: 5px; /* Add some margin between items */
+  }
+
+  .header {
+    font-size: 20px !important; /* Adjust font size for mobile */
+  }
+
+  .footer {
+    font-size: 20px !important; /* Adjust font size for mobile */
+    
+    button {
+      width: 60px !important;/* Smaller button width */
+      height: 25px; /* Smaller button height */
+      font-size: 18px !important; /* Adjust button font size */
+    }
+  }
+}

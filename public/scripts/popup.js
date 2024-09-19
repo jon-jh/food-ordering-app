@@ -19,6 +19,7 @@ changesBtn.onclick = function() {
 
 // Clicking the 'confirm'
 confirmBtn.onclick = function() {
+  
 }
 
 })

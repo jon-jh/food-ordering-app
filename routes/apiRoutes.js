@@ -42,6 +42,8 @@ router.get("/orders", (req, res) => {
       res.status(500).json({ error: err.message });
     });
 });
+
+
 router.get("/orders:phonenumber", (req, res) => {
   
   userQueries
@@ -53,6 +55,7 @@ router.get("/orders:phonenumber", (req, res) => {
       res.status(500).json({ error: err.message });
     });
 });
+
 
 router.get("/users", (req, res) => {
   userQueries

@@ -3,7 +3,7 @@ $(document).ready(function() {
   const menuContainer = $("#menu_container");
 
   // Code edited to hold an object containind the items that have been selected!
-  
+
   const selectedItems = {};
 
   console.log("Menu container:", menuContainer);
@@ -51,7 +51,7 @@ $(document).ready(function() {
     const orderItemsContainer = $("#orderItems");
     orderItemsContainer.empty();
     for (const [name, quantity] of Object.entries(selectedItems)) {
-      const itemElement = $("<div>").text(`${name}: ${quantity}`);
+      const itemElement = $("<div>").text(`${name} (${quantity})`);
       orderItemsContainer.append(itemElement);
     }
     $("#reviewPopup").show();
@@ -61,3 +61,23 @@ $(document).ready(function() {
     $("#reviewPopup").hide();
   });
 })
+
+// Pseudocode for updating the Review Order List
+
+// Update Selected / Order Items:
+// Function to update the selectedItems object:
+// Get the food name from the food box.
+// If the quantity is greater than 0, add / update the item in selectedItems.
+// If the quantity is 0, remove the item from selectedItems.
+// Attach Event Listeners:
+// Attach the increment button click handler to the menu_container.
+// Attach the decrement button click handler to the menu_container.
+// Show Popup with Selected Items:
+// When the review order button is clicked:
+// Clear the current order items in the popup.
+// Loop through the selectedItems object.
+// Create and append elements for each selected item and its quantity.
+// Show the popup.
+// Close Popup:
+// When the close button in the popup is clicked:
+// Hide the popup.

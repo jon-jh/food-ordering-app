@@ -14,6 +14,8 @@
     display: flex;
     justify-content: space-between;
   }
+
+
 }
 
 // Pop-up content
@@ -26,6 +28,7 @@
   width: 40%;
   position: relative;
   min-width: 400px;
+
 
   .close {
     float: right;
@@ -56,6 +59,12 @@
 
   #phoneNumber {
     width: 50%;
+  }
+
+  #orderItems{
+    font-size: x-large;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
   .orderPopUpTitle {

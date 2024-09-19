@@ -1,29 +1,24 @@
 $(document).ready(function() {
-// Giving the window and buttons inside the window variable names.
-const confirmBtn = document.getElementById("confirmOrderBtn")
 const reviewWindow = document.getElementById("reviewPopup");
 const changesBtn = document.getElementById("makeChangesBtn")
-const reviewBtn = document.getElementById("reviewOrderBtn");
+
 const span = document.getElementsByClassName("close")[0];
+const confirmBtn = document.getElementById("confirmOrderBtn")
 
-// Clicking the button opens the window
-reviewBtn.onclick = function() {
-  reviewWindow.style.display = "block";
-}
-
-// Clicking the 'span' area which is the close button closes the window.
+// Clicking the X
 span.onclick = function() {
+  // console.log('button clicked')
   reviewWindow.style.display = "none";
 }
 
-// Clicking the 'make changes' button closes the window.
+// Clicking the 'make changes'
 changesBtn.onclick = function() {
+  // console.log('button clicked')
   reviewWindow.style.display = "none";
 }
 
-// Clicking the 'confirm' button should post the order details to the orders database.
-
+// Clicking the 'confirm'
 confirmBtn.onclick = function() {
-
 }
-});
+
+})

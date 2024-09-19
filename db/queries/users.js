@@ -215,6 +215,10 @@ const getUserByPhoneNumber = (phoneNumber) => {
     });
 };
 
+
+
+
+// Example usage
 // addOrder("555-789-0123", [
 //   { menu_item_id: 10, quantity: 2 },
 //   { menu_item_id: 5, quantity: 1 },
@@ -237,4 +241,5 @@ module.exports = {
   getIdByPhoneNumber,
   addOrder,
   getUserByPhoneNumber,
+  
 };

@@ -21,6 +21,7 @@
 const $orderContainer = $('#order-container');
 
 const createOrder = (order) => {
+
   return $(`
     <div class="order">
       <div class="order-header">
@@ -44,15 +45,35 @@ const createOrder = (order) => {
   `);
 };
 
+// const renderOrders = (arrayOfOrders) => {
+//   console.log('Rendering orders:', arrayOfOrders);
+//   for (const order of arrayOfOrders) {
+//     const $order = createOrder(order);
+//     $orderContainer.prepend($order);
+//   }
+// };
+
 const renderOrders = (arrayOfOrders) => {
-  console.log('Rendering orders:', arrayOfOrders);
+  console.log('Rendering pending orders: ');
   for (const order of arrayOfOrders) {
+    if(order.status === 'pending') {
     const $order = createOrder(order);
     $orderContainer.prepend($order);
+    }
   }
-};
 
+  console.log('Rendering processing orders: ');
+  for (const order of arrayOfOrders) {
+    if(order.status === 'processing') {
+    const $order = createOrder(order);
+    $orderContainer.prepend($order);
+    }
+  }
+
+
+}
 const loadOrders = function() {
+  
   $.ajax({
     method: 'GET',
     url: '/api/orders',

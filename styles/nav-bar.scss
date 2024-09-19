@@ -44,9 +44,38 @@ nav {
 }
 
 
-/* Responsive Design */
-/* Desktop Formatting*/
+/* RESPONSIVE DESIGN */
 
+/* Mobile Formatting */
+@media only screen and (max-width: 768px) {
+  nav {
+    padding: 0 1em; /* Adjust padding to fit mobile screen better */
+  }
+  /* Adjust font size and prevent wrapping for restaurantName */
+  nav span.restaurantName {
+    font-size: 35px; /* Reduce font size for mobile devices */
+  }
+  .nav-right-label {
+    gap: 0.5em; /* Reduce gap between nav elements on mobile */
+  }
+}
+
+/* Even smaller mobile devices (max-width 480px) */
+@media only screen and (max-width: 400px) {
+  nav {
+    padding: 0 0.5em; /* Further reduce padding for smaller devices */
+  }
+
+  nav span.restaurantName {
+    font-size: 28px; /* Smaller font size for very small screens */
+  }
+
+  .nav-right-label {
+    gap: 0.3em; /* Further reduce gap between nav elements */
+  }
+}
+
+/* Desktop Formatting*/
 @media only screen and (min-width:1200px) {
   nav {
     background-color: #0e0f14;

@@ -1,9 +1,7 @@
-$(document).ready(function () {
-  //console.log("Making sure it is on this line ->");
+// This code updates the 'item counter' in the nav bar, the items in the review order list, and the numbers in the food boxes.
+
+$(document).ready(function() {
   const menuContainer = $("#menu_container");
-
-  // Code edited to hold an object containind the items that have been selected!
-
   const selectedItems = {};
 
   let currentItemTotal = 0;
@@ -39,7 +37,6 @@ $(document).ready(function () {
       currentVal -= 1;
       currentItemTotal += 1;
     }
-
     counter.text(currentVal);
     updateSelectedItems(foodBox, currentVal);
     const itemTotalCounter = $('.nav-right-label').children('counter');
@@ -63,24 +60,4 @@ $(document).ready(function () {
   $(".close").on("click", function() {
     $("#reviewPopup").hide();
   });
-})
-
-// Pseudocode for updating the Review Order List
-
-// Update Selected / Order Items:
-// Function to update the selectedItems object:
-// Get the food name from the food box.
-// If the quantity is greater than 0, add / update the item in selectedItems.
-// If the quantity is 0, remove the item from selectedItems.
-// Attach Event Listeners:
-// Attach the increment button click handler to the menu_container.
-// Attach the decrement button click handler to the menu_container.
-// Show Popup with Selected Items:
-// When the review order button is clicked:
-// Clear the current order items in the popup.
-// Loop through the selectedItems object.
-// Create and append elements for each selected item and its quantity.
-// Show the popup.
-// Close Popup:
-// When the close button in the popup is clicked:
-// Hide the popup.
+});

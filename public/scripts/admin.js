@@ -25,5 +25,5 @@ function handleCompleteButton() {
 }
 
 function handleCancelButton(){
-  
+
 }

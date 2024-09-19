@@ -33,31 +33,26 @@ $(document).ready(function () {
     //console.log("Updated current value:", currentVal);
   }
 
-  function updateSelectedItems(foodBox, quantity) {
-    const foodName = foodBox.find('label').text().trim();
-    if (quantity > 0) {
-      selectedItems[foodName] = quantity;
-    } else {
-      delete selectedItems[foodName];
-    }
-  }
+  
 
   menuContainer.on("click", ".increment-btn", handleIncrement);
   menuContainer.on("click", ".decrement-btn", handleDecrement);
 
-  $("#reviewOrderBtn").on("click", function() {
-    const orderItemsContainer = $("#orderItems");
-    orderItemsContainer.empty();
-    for (const [name, quantity] of Object.entries(selectedItems)) {
-      const itemElement = $("<div>").text(`${name} (${quantity})`);
-      orderItemsContainer.append(itemElement);
-    }
-    $("#reviewPopup").show();
-  });
+  $('confirmOrderBtn').on('submit', function(event){
+    event.preventDefault();
+    const $button = $(this);
+    const foodBox = $button.closest(".food-box");
+    const counter = foodBox.find("#counter-value");
 
-  $(".close").on("click", function() {
-    $("#reviewPopup").hide();
-  });
+  
+    // $.ajax({
+    //   type: "POST",
+    //   url: "/order",
+    //   data: 
+    // })
+    
+  })
+  
 })
 
 // Pseudocode for updating the Review Order List

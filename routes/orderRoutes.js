@@ -23,6 +23,7 @@
 const { render } = require('ejs');
 const express = require('express');
 const router  = express.Router();
+const userQueries = require("../db/queries/users");
 
 
 
@@ -37,9 +38,10 @@ router.get('/order', (req, res) => {
 //handle post for orders to add them to the db
 router.post('/order', (req,res) => {
   const {phoneNumber, orders} = req.body;
+  userQueries.addOrder(phoneNumber, orders).then((result) => {
+    console.log(result);
+  })
 
-
-  console.log(req.body);
 
 
 })

@@ -138,30 +138,30 @@ function handleDecrement() {
 // Close Popup:
 // When the close button in the popup is clicked:
 // Hide the popup.
-let currentTotal = 0;
-function handleIncrement() {
-  const $button = $(this);
-  const foodBox = $button.closest(".food-box");
-  const counter = foodBox.find("#counter-value");
-  let currentVal = parseInt(counter.text());
-  currentVal += 1;
-  currentItemTotal += 1;
-  counter.text(currentVal);
-  updateSelectedItems(foodBox, currentVal);
-  const itemTotalCounter = $(".nav-right-label").children("counter");
-  itemTotalCounter.text(`Make Item Counter Here (${currentItemTotal} Items)`);
-}
-function handleDecrement() {
-  const $button = $(this);
-  const foodBox = $button.closest(".food-box");
-  const counter = foodBox.find("#counter-value");
-  let currentVal = parseInt(counter.text());
-  if (currentVal > 0) {
-    currentVal -= 1;
-    currentItemTotal -= 1;
-  }
-  counter.text(currentVal);
-  updateSelectedItems(foodBox, currentVal);
-  const itemTotalCounter = $(".nav-right-label").children("counter");
-  itemTotalCounter.text(`Make Item Counter Here (${currentItemTotal} Items)`);
-}
+// let currentTotal = 0;
+// function handleIncrement() {
+//   const $button = $(this);
+//   const foodBox = $button.closest(".food-box");
+//   const counter = foodBox.find("#counter-value");
+//   let currentVal = parseInt(counter.text());
+//   currentVal += 1;
+//   currentItemTotal += 1;
+//   counter.text(currentVal);
+//   updateSelectedItems(foodBox, currentVal);
+//   const itemTotalCounter = $(".nav-right-label").children("counter");
+//   itemTotalCounter.text(`Make Item Counter Here (${currentItemTotal} Items)`);
+// }
+// function handleDecrement() {
+//   const $button = $(this);
+//   const foodBox = $button.closest(".food-box");
+//   const counter = foodBox.find("#counter-value");
+//   let currentVal = parseInt(counter.text());
+//   if (currentVal > 0) {
+//     currentVal -= 1;
+//     currentItemTotal -= 1;
+//   }
+//   counter.text(currentVal);
+//   updateSelectedItems(foodBox, currentVal);
+//   const itemTotalCounter = $(".nav-right-label").children("counter");
+//   itemTotalCounter.text(`Make Item Counter Here (${currentItemTotal} Items)`);
+// }

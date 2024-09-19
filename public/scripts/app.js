@@ -83,9 +83,11 @@ const createOrder = (order) => {
 const renderOrders = (arrayOfOrders) => {
   console.log('Rendering orders:', arrayOfOrders);
   for (const order of arrayOfOrders) {
+    if(order.status !== 'completed' && order.status !== 'canceled'){
     const $order = createOrder(order);
     $orderContainer.prepend($order);
   }
+}
 };
 
 const loadOrders = function() {

@@ -27,7 +27,7 @@ const renderMenus = function () {
         </div>
         <footer class="footer">
           <button type="button" id="decrement-btn">-</button>
-          <span id="counter-value">0</span>
+          <span id="counter-value" name = "counter-value"> 0 </span>
           <button type="button" id="increment-btn">+</button>
         </footer>
       </div>

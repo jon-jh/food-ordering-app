@@ -25,6 +25,8 @@ const express = require('express');
 const router  = express.Router();
 
 
+
+
 //redirects to the newpage for now
 router.get('/order', (req, res) => {
   res.redirect('/new')
@@ -34,8 +36,12 @@ router.get('/order', (req, res) => {
 
 //handle post for orders to add them to the db
 router.post('/order', (req,res) => {
-  const {} = req.body;
+  const {phoneNumber, orders} = req.body;
+
+
   console.log(req.body);
+
+
 })
 
 

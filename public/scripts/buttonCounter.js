@@ -1,22 +1,35 @@
-$(document).ready(function() {
-  let currentVal = parseInt($("#counter-value").val(), 10);
-  console.log('Value not number:', $("#counter-value").val());
-  console.log('Initial current value:', currentVal);
+$(document).ready(function () {
+  console.log("Making sure it is on this line ->");
+  const menuContainer = $("#menu_container");
 
-  function updateCounter() {
-      $("#counter-value").text(currentVal);
-      console.log('Updated current value:', currentVal);
+  console.log("Menu container:", menuContainer);
+
+  function handleIncrement() {
+    const $button = $(this);
+    const foodBox = $button.closest(".food-box");
+    const counter = foodBox.find("#counter-value");
+    let currentVal = parseInt(counter.text(), 10) || 0;
+
+    currentVal += 1;
+
+    counter.text(currentVal);
+    console.log("Increment");
   }
 
-  $("#decrement-btn").on('click', function() {
-      if (currentVal > 0) {
-          currentVal -= 1;
-          updateCounter();
-      }
-  });
+  function handleDecrement() {
+    const $button = $(this);
+    const foodBox = $button.closest(".food-box");
+    const counter = foodBox.find("#counter-value");
+    let currentVal = parseInt(counter.text(), 10) || 0;
+    if (currentVal > 0) {
+      currentVal -= 1;
+    }
 
-  $("#increment-btn").on('click', function() {
-      currentVal += 1;
-      updateCounter();
-  });
+    counter.text(currentVal);
+    console.log("Updated current value:", currentVal);
+  }
+
+  menuContainer.on("click", ".increment-btn", handleIncrement);
+
+  menuContainer.on("click", ".decrement-btn", handleDecrement);
 });

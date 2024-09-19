@@ -19,8 +19,8 @@
 
 //All for admin page
 const $orderContainer = $('#order-container');
-
 const createOrder = (order) => {
+
   return $(`
     <div class="order">
       <div class="order-header">
@@ -29,7 +29,7 @@ const createOrder = (order) => {
         <p>Order Number: ${order.id}</p>
       </div>
       <div class="order-body">
-        <p>Ph. ${order.phone_number}</p>
+        <p>Phone-number. ${order.phone_number}</p>
       </div>
       <div class="order-footer">
       <p>User ID: ${order.user_id}</p>
@@ -44,15 +44,30 @@ const createOrder = (order) => {
   `);
 };
 
-const renderOrders = (arrayOfOrders) => {
-  console.log('Rendering orders:', arrayOfOrders);
-  for (const order of arrayOfOrders) {
-    const $order = createOrder(order);
-    $orderContainer.prepend($order);
-  }
-};
 
+
+const renderOrders = (arrayOfOrders) => {
+  let $order;
+  console.log('Rendering pending orders: ');
+  for (const order of arrayOfOrders) {
+    if(order.status === 'pending') {
+     $order = createOrder(order);
+    $orderContainer.prepend($order);
+    }
+  }
+
+  console.log('Rendering processing orders: ');
+  for (const order of arrayOfOrders) {
+    if(order.status === 'processing') {
+     $order = createOrder(order);
+    $orderContainer.prepend($order);
+    }
+  }
+
+
+}
 const loadOrders = function() {
+  
   $.ajax({
     method: 'GET',
     url: '/api/orders',

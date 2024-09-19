@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  console.log("Making sure it is on this line ->");
+$(document).ready(function () {
+  //console.log("Making sure it is on this line ->");
   const menuContainer = $("#menu_container");
 
   // Code edited to hold an object containind the items that have been selected!
@@ -12,27 +12,25 @@ $(document).ready(function() {
     const $button = $(this);
     const foodBox = $button.closest(".food-box");
     const counter = foodBox.find("#counter-value");
-    let currentVal = parseInt(counter.text(), 10) || 0;
+    let currentVal = parseInt(counter.text()) || 0;
 
     currentVal += 1;
 
     counter.text(currentVal);
-    updateSelectedItems(foodBox, currentVal);
-    console.log("Increment");
+    //console.log("Increment");
   }
 
   function handleDecrement() {
     const $button = $(this);
     const foodBox = $button.closest(".food-box");
     const counter = foodBox.find("#counter-value");
-    let currentVal = parseInt(counter.text(), 10) || 0;
+    let currentVal = parseInt(counter.text()) || 0;
     if (currentVal > 0) {
       currentVal -= 1;
     }
 
     counter.text(currentVal);
-    updateSelectedItems(foodBox, currentVal);
-    console.log("Updated current value:", currentVal);
+    //console.log("Updated current value:", currentVal);
   }
 
   function updateSelectedItems(foodBox, quantity) {

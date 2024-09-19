@@ -226,7 +226,7 @@ const getUserByPhoneNumber = (phoneNumber) => {
 //getIdByPhoneNumber('555-808-0809')
 //getOrdersByPhoneNumber('555-789-0123');
 //addUser({phoneNumber: '123-456-7890'});
-getUserByPhoneNumber("555-789-0123");
+//getUserByPhoneNumber("555-789-0123");
 module.exports = {
   getUsers,
   getStatusByPhoneNumber,

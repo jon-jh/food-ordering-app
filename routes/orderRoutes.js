@@ -25,17 +25,25 @@ const express = require('express');
 const router  = express.Router();
 
 
-//redirects to the orders api for now
+//redirects to the newpage for now
 router.get('/order', (req, res) => {
-  res.redirect('api/orders')
+  res.redirect('/new')
 }); 
+
 
 
 //handle post for orders to add them to the db
 router.post('/order', (req,res) => {
   const {} = req.body;
+  console.log(req.body);
 })
 
+
+//test ignore 
+router.get("/new", (req, res) => {
+  //console.log('rendering new');
+  res.render('formTest');
+});
 
 
 //save order to data base after checkout 

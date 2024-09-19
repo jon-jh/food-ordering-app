@@ -1,69 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>User Home Page</title>
 
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <title>User Home Page</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
-    <link rel="stylesheet" href="/styles/layout.css" />
-    <link rel="stylesheet" href="/styles/nav-bar.css" />
-    <link rel="stylesheet" href="/styles/header.css" />
-    <link rel="stylesheet" href="/styles/food-box.css" />
-    <link rel="stylesheet" href="/styles/popup.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
 
-    <script src="/vendor/jquery-3.0.0.js"></script>
-    <script type = "text/javascript" src="/scripts/app.js"></script>
-    <script type = "text/javascript" src="/scripts/buttonCounter.js"></script>
-  </head>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/nav-bar.css" />
+  <link rel="stylesheet" href="/styles/header.css" />
+  <link rel="stylesheet" href="/styles/food-box.css" />
+  <link rel="stylesheet" href="/styles/popup.css" />
 
-  <body>
-    <!-- nav-bar -->
-    <nav>
-      <span>Restaurant Name Here (User Home Page)</span>
-      <span class="nav-right-label">
-        <counter>Make Item Counter Here (0 Items)</counter>
-        <button id="reviewOrderBtn">Review Order</button>
-      </span>
-    </nav>
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/buttonCounter.js"></script>
+  <script type="text/javascript" src="/scripts/popup.js"></script>
+</head>
 
-    <!-- Pop-up Review Window -->
-    <div id="reviewPopup" class="popup">
-      <div class="popup-content">
-        <span class="close">X</span>
-        <h2>Your Order</h2>
-        <div id="orderItems">
-          <!-- Order items should be inserted here -->
-        </div>
-        <div class="footer">
-          <button id="confirmOrderBtn">Confirm</button>
-          <input
-            type="text"
-            id="phoneNumber"
-            placeholder=" Enter your phone number"
-          />
-          <button id="makeChangesBtn">Make Changes</button>
-        </div>
+<body>
+  <!-- nav-bar -->
+  <nav>
+    <span>Restaurant Name Here (User Home Page)</span>
+    <span class="nav-right-label">
+      <counter>Make Item Counter Here (0 Items)</counter>
+      <button id="reviewOrderBtn">Review Order</button>
+    </span>
+  </nav>
+
+  <!-- Pop-up Review Window -->
+  <div id="reviewPopup" class="popup">
+    <div class="popup-content">
+      <span class="close">X</span>
+      <h2>Your Order</h2>
+      <div id="orderItems">
+        <!-- Order items should be inserted here -->
+      </div>
+      <div class="footer">
+        <button id="confirmOrderBtn">Confirm</button>
+        <input type="text" id="phoneNumber" placeholder=" Enter your phone number" />
+        <button id="makeChangesBtn">Make Changes</button>
       </div>
     </div>
+  </div>
 
-    <!-- header/menu-title -->
-    <header>
-      <span> </span>
-    </header>
+  <!-- header/menu-title -->
+  <header>
+    <span> </span>
+  </header>
 
-    <!-- menu-food-boxes -->
-    <div id="menu_container" class="grid-container"></div>
-  </body>
+  <!-- menu-food-boxes -->
+  <div id="menu_container" class="grid-container"></div>
+</body>
+
 </html>

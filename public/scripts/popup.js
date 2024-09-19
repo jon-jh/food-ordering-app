@@ -2,13 +2,13 @@
 const confirmBtn = document.getElementById("confirmOrderBtn")
 const reviewWindow = document.getElementById("reviewPopup");
 const changesBtn = document.getElementById("makeChangesBtn")
-const reviewBtn = document.getElementById("reviewOrderBtn");
+// const reviewBtn = document.getElementById("reviewOrderBtn");
 const span = document.getElementsByClassName("close")[0];
 
-// Clicking the button opens the window
-reviewBtn.onclick = function() {
-  reviewWindow.style.display = "block";
-}
+// // Clicking the button opens the window
+// reviewBtn.onclick = function() {
+//   reviewWindow.style.display = "block";
+// }
 
 // Clicking the 'span' area which is the close button closes the window.
 span.onclick = function() {
@@ -23,7 +23,6 @@ changesBtn.onclick = function() {
 // Clicking the 'confirm' button should post the order details to the orders database.
 
 confirmBtn.onclick = function() {
-  
-}
 
+}
 

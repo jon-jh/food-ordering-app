@@ -52,7 +52,6 @@ const renderMenus = function () {
 }
 renderMenus();
 
-
 //All for admin page
 const $orderContainer = $("#order-container");
 const createOrder = (order) => {

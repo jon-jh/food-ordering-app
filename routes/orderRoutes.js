@@ -38,8 +38,11 @@ router.get('/order', (req, res) => {
 //handle post for orders to add them to the db
 router.post('/order', (req,res) => {
   const {phoneNumber, orders} = req.body;
+  console.log('In order post ',req.body);
   userQueries.addOrder(phoneNumber, orders).then((result) => {
-    console.log(result);
+    console.log('order route: ', result);
+  }).catch((error) => {
+    console.log(error);
   })
 
 

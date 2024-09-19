@@ -3,10 +3,6 @@
   <head>
     <title>Three Guys - Menu</title>
 
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <!-- Exo 2 Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,9 +27,14 @@
     <link rel="stylesheet" href="/styles/header.css" />
     <link rel="stylesheet" href="/styles/food-box.css" />
     <link rel="stylesheet" href="/styles/popup.css" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script src="/vendor/jquery-3.0.0.js"></script>
-    <script defer src="/scripts/app.js"></script>
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/buttonCounter.js"></script>
+  <script type="text/javascript" src="/scripts/popup.js"></script>
   </head>
 
   <body>
@@ -65,14 +66,15 @@
         </div>
       </div>
     </div>
-    <script src="/scripts/popup.js"></script>
+  </div>
 
-    <!-- header/menu-title -->
-    <header>
-      <span class="menuTitle">Menu</span>
-    </header>
+  <!-- header/menu-title -->
+  <header>
+    <span class="menuTitle">Menu</span>
+  </header>
 
-    <!-- menu-food-boxes -->
-    <div id="menu_container" class="grid-container"></div>
-  </body>
+  <!-- menu-food-boxes -->
+  <div id="menu_container" class="grid-container"></div>
+</body>
+
 </html>

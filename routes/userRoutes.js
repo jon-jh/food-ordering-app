@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 //test ignore 
 router.get("/new", (req, res) => {
   //console.log('rendering new');
-  res.render('newuser');
+  res.render('formTest');
 });
 
 //New user login info will be sent here
@@ -31,7 +31,8 @@ router.post("/new", (req, res) => {
 
 
 
-
+//make a checkout route
+//create and update to database route
 
 
 module.exports = router;

@@ -149,7 +149,7 @@ const getIdByPhoneNumber = (phoneNumber) => {
     });
 };
 
-//receives an object of orders [{menu_item_id, quantity},..]
+//receives an object of orders [{menu_item_name, quantity},..]
 const addOrder = (phoneNumber, orders) => {
   const queryString = `
   -- First, select the user_id based on the phone number
@@ -174,22 +174,38 @@ const addOrder = (phoneNumber, orders) => {
       let queryParams = [];
       let values = [];
 
-      orders.forEach((order, index) => {
-        const baseIndex = index * 3 + 1;
-        values.push(`($${baseIndex}, $${baseIndex + 1}, $${baseIndex + 2})`);
-        queryParams.push(order.menu_item_id, orderId, order.quantity);
+      // Create an array of promises for fetching menu_item_ids based on menu_name
+      const menuItemPromises = orders.map((order) => {
+        const { name, quantity } = order; // Use menu_name here
+        return db.query('SELECT id FROM menu_items WHERE name = $1', [name])
+          .then((res) => {
+            if (res.rows.length === 0) {
+              throw new Error(`Menu item '${name}' not found`);
+            }
+            const menu_item_id = res.rows[0].id;
+            return { menu_item_id, quantity };
+          });
       });
 
-      orderItemsQuery += values.join(", ") + " RETURNING *;";
+      return Promise.all(menuItemPromises)
+        .then((resolvedOrders) => {
+          resolvedOrders.forEach((order, index) => {
+            const baseIndex = index * 3 + 1;
+            values.push(`($${baseIndex}, $${baseIndex + 1}, $${baseIndex + 2})`);
+            queryParams.push(order.menu_item_id, orderId, order.quantity);
+          });
 
-      return db.query(orderItemsQuery, queryParams);
+          orderItemsQuery += values.join(", ") + " RETURNING *;";
+
+          return db.query(orderItemsQuery, queryParams);
+        });
     })
     .then((result) => {
       console.log(result.rows);
-      return result.rows;
+      return result.rows; // Return the inserted order items
     })
     .catch((err) => {
-      console.log(err.message);
+      console.error(err.message); // Log any errors
     });
 };
 

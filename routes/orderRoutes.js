@@ -23,6 +23,9 @@
 const { render } = require('ejs');
 const express = require('express');
 const router  = express.Router();
+const userQueries = require("../db/queries/users");
+
+
 
 
 //redirects to the newpage for now
@@ -34,8 +37,16 @@ router.get('/order', (req, res) => {
 
 //handle post for orders to add them to the db
 router.post('/order', (req,res) => {
-  const {} = req.body;
-  console.log(req.body);
+  const {phoneNumber, orders} = req.body;
+  console.log('In order post ',req.body);
+  userQueries.addOrder(phoneNumber, orders).then((result) => {
+    console.log('order route: ', result);
+  }).catch((error) => {
+    console.log(error);
+  })
+
+
+
 })
 
 

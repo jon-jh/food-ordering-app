@@ -76,8 +76,8 @@ const createOrder = (order) => {
     <button type="submit" id="confirm-10">Confirm - 10 Minutes</button>
     <button type="submit" id="confirm-20">Confirm - 20 Minutes</button>
     <button type="submit" id="confirm-30">Confirm - 30 Minutes</button>
-    <button type="submit"  id="complete-order">Complete Order</button>
-    <button type="submit"  id="cancel-order">Cancel Order</button>
+    <button type="submit" id="complete-order">Complete Order</button>
+    <button type="submit" id="cancel-order">Cancel Order</button>
     </form>
       </div>
     </div>
@@ -89,7 +89,7 @@ const renderOrders = (arrayOfOrders) => {
   console.log("Rendering pending orders: ");
   for (const order of arrayOfOrders) {
     if (order.status === "pending") {
-      const $order = createOrder(order);
+     const $order = createOrder(order);
       $orderContainer.prepend($order);
     }
   }
@@ -116,5 +116,6 @@ const loadOrders = function () {
     },
   });
 };
+
 
 loadOrders();

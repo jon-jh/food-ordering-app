@@ -14,4 +14,16 @@
  *
  * @throws Will alert an error message if the AJAX request fails.
  */
+//All functionality for admin page here
 
+$(document).ready(function(){
+
+})
+
+function handleCompleteButton() {
+
+}
+
+function handleCancelButton(){
+
+}

@@ -35,7 +35,7 @@ $(document).ready(function() {
     let currentVal = parseInt(counter.text()) || 0;
     if (currentVal > 0) {
       currentVal -= 1;
-      currentItemTotal += 1;
+      currentItemTotal -= 1;
     }
     counter.text(currentVal);
     updateSelectedItems(foodBox, currentVal);
@@ -62,25 +62,10 @@ $(document).ready(function() {
       const adjustedPrice = price.trim();
       const adjustedQuantity = quantity.replace(')', '').trim();
       console.log(name, adjustedPrice, adjustedQuantity)
-      //const menu_item_id = getId(itemValues[0]);
-      // $.ajax({
-      //   type: "GET",
-      //   url: "/api/menus"
-      // }).done((response) => {
-      //   for(let menu of response.menus)
-      //   {
-      //     if (menu.name === name){
-      //       menu_item_id = menu.id;
-      //       console.log(menu.id, ' ');
-      //     }
-      //   }
-      // })
-
-      //console.log('Menu Array: ', menu_item_id);
+      
 
       orderItemsArray.push({name, quantity: adjustedQuantity });
     }
-    // const counter = foodBox.find("#counter-value");
     console.log($button)
     console.log(orderItems)
 
@@ -99,8 +84,17 @@ $(document).ready(function() {
       data: JSON.stringify(data),
     })
 
-  })
+  });
 
+  $("#reviewOrderBtn").on("click" , function() {
+    const orderItemsContainer = $("#orderItems");
+    orderItemsContainer.empty();
+    for(const [name, quantity] of Object.entries(selectedItems)) {
+      const itemElement = $("<div>").text(`${name} (${quantity})`);
+      orderItemsContainer.append(itemElement);
+    }
+    $("#reviewPopup").show();
+  });
 
   $(".close").on("click", function() {
     $("#reviewPopup").hide();

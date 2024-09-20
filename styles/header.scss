@@ -2,14 +2,27 @@ header {
   position: absolute;
   top: 120px;
   width: 100%;
-  height: 100px;
-  background-image: url(/menu.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  height: 90px;
   z-index: 1; 
   font-family: "Exo 2", sans-serif;
+  color: #ffffffcf;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
+}
+
+.menuTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black,
+        -0.05em -0.05em black,
+        -0.05em 0.05em black,
+        0.05em -0.05em black,
+        0.05em 0.05em black;
 }

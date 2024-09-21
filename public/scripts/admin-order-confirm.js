@@ -14,10 +14,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
     else if (event.target.matches('#cancel-order')){
       alert('Canceling Order')
-      
+      const data = {
+        phoneNumber: 'add your phone here',
+      }
+      $.ajax({
+        type: "POST",
+        url: "/admin/cancel",
+        contentType: "application/json",
+        data:JSON.stringify(data),
+      })
     }
     else if (event.target.matches('#complete-order')){
       alert ('Completing Order')
+
     }
   });
 });

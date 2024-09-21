@@ -62,10 +62,13 @@ const createOrder = (order) => {
         <p>Order Date: ${new Date(order.order_date).toLocaleString()}</p>
         <p>Order Number: ${order.id}</p>
       </div>
+      
       <div class="order-body">
         <p>Phone-number. ${order.phone_number}</p>
+        <p>Menu ID: ${order.menu_item_id}</p>
       </div>
       <div class="order-footer">
+      
       <p>User ID: ${order.user_id}</p>
         <img src="${order.image}" alt="${
     order.name

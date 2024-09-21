@@ -19,16 +19,15 @@ const client = require('twilio')(accountSid, authToken);
 const userQueries = require("../db/queries/users");
 const fromNumber = process.env.FROM_NUMBER;
 const toNumber = process.env.TO_NUMBER;
-const createMessage = () => {
+const createMessage = (phoneNumber,message) => {
   client.messages.create({
-    body: "This is the ship that made the Kessel Run in fourteen parsecs?",
+    body: message,
     from: fromNumber,
-    to: toNumber,
+    to: phoneNumber,
   }).then((message) => console.log(message.body));
 }
 
 router.get('/admin', (req, res) => {
-  //createMessage();
   res.render('admin');
 });
 
@@ -39,11 +38,14 @@ router.post('/admin', (req, res) => {
 
 //change the order status to cancelled
 router.post('/admin/cancel', (req, res) => {
-  const {phoneNumber, order_id, menu_id} = req.body
-  userQueries.changeOrderStatus(order_id, 'canceled', menu_id)
-  .then((result) => {
-    createMessage();
-  })
+  const {phoneNumber} = req.body
+  //console.log("req data: ",req);
+  
+  createMessage(phoneNumber, 'Order canceled');
+  // userQueries.changeOrderStatus(order_id, 'canceled', menu_id)
+  // .then((result) => {
+  //   createMessage(phoneNumber, 'Order canceled');
+  // })
 });
 
 //change the order status to processing when any of the confirm buttons is clicked

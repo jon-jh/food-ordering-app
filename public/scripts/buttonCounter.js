@@ -6,7 +6,7 @@ $(document).ready(function() {
 
   let currentItemTotal = 0;
 
-  console.log("Menu container:", menuContainer);
+  //console.log("Menu container:", menuContainer);
 
   function updateSelectedItems(foodBox, quantity) {
     const foodName = foodBox.find('label').text().trim();
@@ -47,7 +47,7 @@ $(document).ready(function() {
   menuContainer.on("click", ".increment-btn", handleIncrement);
   menuContainer.on("click", ".decrement-btn", handleDecrement);
 
-  console.log($('#confirmOrderBtn'))
+  //console.log($('#confirmOrderBtn'))
 
   $('#confirmOrderBtn').on('click', function (event) {
     event.preventDefault();
@@ -61,13 +61,13 @@ $(document).ready(function() {
       const name = itemValues[0].trim();
       const adjustedPrice = price.trim();
       const adjustedQuantity = quantity.replace(')', '').trim();
-      console.log(name, adjustedPrice, adjustedQuantity)
+      //console.log(name, adjustedPrice, adjustedQuantity)
       
 
       orderItemsArray.push({name, quantity: adjustedQuantity });
     }
-    console.log($button)
-    console.log(orderItems)
+    //console.log($button)
+    //console.log(orderItems)
 
     const data = {
       orders: orderItemsArray,

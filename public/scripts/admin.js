@@ -17,13 +17,7 @@
 //All functionality for admin page here
 
 $(document).ready(function(){
-
+ 
 })
 
-function handleCompleteButton() {
 
-}
-
-function handleCancelButton(){
-
-}

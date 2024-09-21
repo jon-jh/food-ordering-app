@@ -177,7 +177,8 @@ const addOrder = (phoneNumber, orders) => {
       // Create an array of promises for fetching menu_item_ids based on menu_name
       const menuItemPromises = orders.map((order) => {
         const { name, quantity } = order; // Use menu_name here
-        return db.query('SELECT id FROM menu_items WHERE name = $1', [name])
+        return db
+          .query("SELECT id FROM menu_items WHERE name = $1", [name])
           .then((res) => {
             if (res.rows.length === 0) {
               throw new Error(`Menu item '${name}' not found`);
@@ -187,18 +188,17 @@ const addOrder = (phoneNumber, orders) => {
           });
       });
 
-      return Promise.all(menuItemPromises)
-        .then((resolvedOrders) => {
-          resolvedOrders.forEach((order, index) => {
-            const baseIndex = index * 3 + 1;
-            values.push(`($${baseIndex}, $${baseIndex + 1}, $${baseIndex + 2})`);
-            queryParams.push(order.menu_item_id, orderId, order.quantity);
-          });
-
-          orderItemsQuery += values.join(", ") + " RETURNING *;";
-
-          return db.query(orderItemsQuery, queryParams);
+      return Promise.all(menuItemPromises).then((resolvedOrders) => {
+        resolvedOrders.forEach((order, index) => {
+          const baseIndex = index * 3 + 1;
+          values.push(`($${baseIndex}, $${baseIndex + 1}, $${baseIndex + 2})`);
+          queryParams.push(order.menu_item_id, orderId, order.quantity);
         });
+
+        orderItemsQuery += values.join(", ") + " RETURNING *;";
+
+        return db.query(orderItemsQuery, queryParams);
+      });
     })
     .then((result) => {
       console.log(result.rows);
@@ -231,8 +231,36 @@ const getUserByPhoneNumber = (phoneNumber) => {
     });
 };
 
+const changeOrderStatus = (order_id, orderStatus, menu_item_id) => {
+  const queryString = `
+  UPDATE orders
+  SET status = $1
+  WHERE id = $2 
+  AND id IN (
+  SELECT order_id
+  FROM order_items
+  WHERE menu_item_id = $3
+  )
+  RETURNING *
+  `;
 
+  const queryParams = [orderStatus, order_id, menu_item_id];
 
+  return db
+    .query(queryString, queryParams)
+    .then((result) => {
+      console.log(
+        `Order status of ${order_id} and ${menu_item_id} updated to`,
+        result.rows
+      );
+      return result.rows[0];
+    })
+    .catch((err) => {
+      console.log("Error updating order status: ", err.message);
+    });
+};
+
+//changeOrderStatus(1, 'completed', 12);
 
 // Example usage
 // addOrder("555-789-0123", [
@@ -257,5 +285,5 @@ module.exports = {
   getIdByPhoneNumber,
   addOrder,
   getUserByPhoneNumber,
-  
+  changeOrderStatus,
 };

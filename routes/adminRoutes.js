@@ -16,14 +16,16 @@ const router  = express.Router();
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
-
-// const createMessage = () => {
-//   client.messages.create({
-//     body: "This is the ship that made the Kessel Run in fourteen parsecs?",
-//     from: "+13437778496",
-//     to: "+13437778496",
-//   }).then((message) => console.log(message.body));
-// }
+const userQueries = require("../db/queries/users");
+const fromNumber = process.env.FROM_NUMBER;
+const toNumber = process.env.TO_NUMBER;
+const createMessage = () => {
+  client.messages.create({
+    body: "This is the ship that made the Kessel Run in fourteen parsecs?",
+    from: fromNumber,
+    to: toNumber,
+  }).then((message) => console.log(message.body));
+}
 
 router.get('/admin', (req, res) => {
   //createMessage();
@@ -33,6 +35,20 @@ router.get('/admin', (req, res) => {
 // ToDo: add status changer will req status from the form submit
 router.post('/admin', (req, res) => {
   res.send('Status change functionality to be implemented');
+});
+
+//change the order status to cancelled
+router.post('/admin/cancel', (req, res) => {
+  const {phoneNumber, order_id, menu_id} = req.body
+  userQueries.changeOrderStatus(order_id, 'canceled', menu_id)
+  .then((result) => {
+    createMessage();
+  })
+});
+
+//change the order status to processing when any of the confirm buttons is clicked
+router.post('/admin/processing', (req, res) => {
+
 });
 
 module.exports = router;

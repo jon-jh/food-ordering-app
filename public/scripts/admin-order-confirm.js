@@ -12,6 +12,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
       event.preventDefault();
       alert('BUTTON TEST - CONFIRMED 30 MINUTES');
     }
+    else if (event.target.matches('#cancel-order')){
+      alert('Canceling Order')
+      
+    }
+    else if (event.target.matches('#complete-order')){
+      alert ('Completing Order')
+    }
   });
 });
 

@@ -42,7 +42,15 @@ router.post('/order', (req,res) => {
   userQueries.addOrder(phoneNumber, orders).then((result) => {
     console.log('order route: ', result);
   }).catch((error) => {
-    console.log(error);
+    userQueries.addUser({phoneNumber: phoneNumber})
+    .then((result) => {
+      console.log("added user with", result);
+    }).then(() =>  {
+      userQueries.addOrder(phoneNumber, orders).then((result) => {
+        console.log('Order received: ', result);
+      })
+      .catch((error) => console.log(error.message))
+    })
   })
 
 

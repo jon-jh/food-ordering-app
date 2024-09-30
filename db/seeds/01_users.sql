@@ -6,15 +6,12 @@ INSERT INTO users (name, phone_number) VALUES
 
 -- Insert data into menu_items table
 INSERT INTO menu_items (name, price, description, image) VALUES
-('Pancakes', 550, 'Fluffy pancakes with syrup', 'pancakes.jpg'),
 ('Waffles', 600, 'Belgian waffles with strawberries', 'waffles.jpg'),
 ('Omelette', 400, 'Cheese omelette with herbs', 'omelette.jpg'),
 ('Caesar Salad', 500, 'Caesar salad with croutons', 'caesar_salad.jpg'),
 ('Soup', 350, 'Chicken noodle soup', 'soup.jpg'),
-('Mozzarella Sticks', 450, 'Fried mozzarella sticks', 'mozzarella_sticks.jpg'),
-('French Fries', 250, 'Crispy french fries', 'french_fries.jpg'),
-('Grilled Cheese', 400, 'Grilled cheese sandwich', 'grilled_cheese.jpg'),
-('Burger', 500, 'Juicy grilled burger with cheese', 'burger.jpg');
+('French Fries', 250, 'Crispy french fries', 'fries.jpg'),
+('Grilled Cheese', 400, 'Grilled cheese sandwich', 'grilled_cheese.jpg');
 
 -- Insert data into orders table
 INSERT INTO orders (user_id, order_date, status) VALUES

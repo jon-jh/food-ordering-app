@@ -14,6 +14,7 @@
 
 ## Dependencies
 
-- Node 10.x or above
-- NPM 5.x or above
-- PG 6.x
+- Node.js: Version 10.x or above
+- npm: Version 5.x or above
+- PostgreSQL: Version 15 (database server)
+- pg (Node.js PostgreSQL client): Version 6.x
